@@ -148,6 +148,15 @@ header>div{text-align:center}
 .vb small{display:block;font-weight:500;font-size:.75rem;opacity:.9;margin-top:2px}
 .vb.pri{background:var(--btn);color:#fff;border-color:var(--btn)}
 .vmcancel{width:100%;padding:12px;border:none;background:transparent;color:var(--mut);font-size:.9rem;cursor:pointer;text-decoration:underline}
+.nota{margin-top:18px;padding-top:14px;border-top:1px solid var(--ln)}
+.nb{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;padding:10px 12px;border:1px solid var(--ln);border-radius:10px;background:var(--bg);color:var(--ac2);font-size:.9rem;font-weight:600;cursor:pointer}
+.nb .nbi{font-size:.7rem;font-weight:600;background:var(--btn);color:#fff;border-radius:999px;padding:1px 9px}
+.nb .nbc{transition:transform .2s}.nb[aria-expanded="true"] .nbc{transform:rotate(180deg)}
+#nta{display:block;width:100%;box-sizing:border-box;min-height:9.5em;margin-top:10px;padding:0 12px;border:1px solid var(--ln);border-radius:10px;background-color:var(--bg);background-image:repeating-linear-gradient(transparent,transparent calc(1.7em - 1px),rgba(100,116,139,.3) 1.7em);background-attachment:local;color:var(--tx);font-size:1rem;line-height:1.7em;resize:vertical;font-family:inherit}
+.nst{font-size:.75rem;color:var(--mut);text-align:center;min-height:1.3em;margin-top:6px}
+.nota .btns{justify-content:center;margin-top:4px}
+.nota .btns button{padding:7px 14px;font-size:.85rem}
+.pg .lines.notas{--lh:28px;background:repeating-linear-gradient(#fff,#fff calc(var(--lh) - 1px),#c9d6e6 var(--lh));line-height:var(--lh);white-space:pre-wrap;overflow:hidden;overflow-wrap:anywhere;text-align:left;font-size:14px;color:#111}
 .dia.ok{opacity:.65}.dia.ok .dl{text-decoration:line-through}
 .dia.hl{outline:2px solid var(--y)}
 .verse,#c-rf,.apps{text-align:left}
@@ -204,6 +213,14 @@ header>div{text-align:center}
   <div id="s-vs"><div class="hh">Versículo</div><blockquote class="verse" style="margin-left:0"><span id="c-vs"></span> <span id="c-vr"></span></blockquote></div>
   <div id="s-rf"><div class="hh">Reflexão</div><p id="c-rf"></p></div>
   <div id="s-ap"><div class="hh">Três aplicações para esta semana</div><ol class="apps" id="c-ap"></ol></div>
+  <div id="s-nota" class="nota">
+   <button type="button" id="nb" class="nb" aria-expanded="false" aria-controls="nbox"><span>📝 Minhas Anotações desta Semana</span><span class="nbi hide" id="nbi">com anotação</span><span class="nbc" aria-hidden="true">▾</span></button>
+   <div id="nbox" class="hide">
+    <textarea id="nta" rows="7" placeholder="Escreva aqui suas reflexões e orações desta semana…" aria-label="Minhas anotações desta semana"></textarea>
+    <div class="nst" id="nst" role="status"></div>
+    <div class="btns"><button type="button" id="ncp">Copiar anotação</button><button type="button" id="ncl">Limpar anotação</button></div>
+   </div>
+  </div>
   <div id="s-vazio" class="mut hide">Esta semana ainda não foi preenchida.</div>
   <div class="ftr" id="c-ft"></div>
  </article>
@@ -452,6 +469,45 @@ $('vmx').onclick=fechaVM;
 $('vm').onclick=e=>{if(e.target===$('vm'))fechaVM()};
 document.addEventListener('keydown',e=>{if(e.key==='Escape')fechaVM()});
 
+// Minhas Anotações (localStorage, uma por semana: ibm_nota_semana_1 ... 52)
+const NK=n=>'ibm_nota_semana_'+n;
+function lerNota(n){try{return localStorage.getItem(NK(n))||''}catch(e){return ''}}
+function gravaNota(n,t){try{if(t.trim())localStorage.setItem(NK(n),t);else localStorage.removeItem(NK(n));return true}catch(e){return false}}
+let notaSem=0,notaTimer=null;
+function indicaNota(){$('nbi').classList.toggle('hide',!lerNota(wi+1).trim())}
+function salvaNota(){
+ clearTimeout(notaTimer);notaTimer=null;
+ if(!notaSem)return;
+ const ok=gravaNota(notaSem,$('nta').value);
+ $('nst').textContent=ok?'✓ Salvo automaticamente neste aparelho':'⚠️ Não foi possível salvar neste navegador';
+ indicaNota();
+}
+function carregaNota(){
+ if(notaSem&&notaTimer){clearTimeout(notaTimer);notaTimer=null;gravaNota(notaSem,$('nta').value)}
+ notaSem=wi+1;$('nta').value=lerNota(notaSem);$('nst').textContent='';indicaNota();
+}
+$('nb').onclick=()=>{const abre=$('nbox').classList.contains('hide');$('nbox').classList.toggle('hide',!abre);$('nb').setAttribute('aria-expanded',abre?'true':'false')};
+$('nta').addEventListener('input',()=>{$('nst').textContent='Salvando…';clearTimeout(notaTimer);notaTimer=setTimeout(salvaNota,600)});
+$('nta').addEventListener('blur',salvaNota);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')salvaNota()});
+window.addEventListener('pagehide',salvaNota);
+$('ncp').onclick=async()=>{const t=$('nta').value;if(!t.trim()){toast('Não há anotação para copiar');return}toast(await copyText(t)?'Anotação copiada! ✓':'Não foi possível copiar')};
+$('ncl').onclick=()=>{
+ if(!$('nta').value.trim()){toast('A anotação já está vazia');return}
+ if(!confirm('Apagar a anotação da Semana '+notaSem+'? Isso não pode ser desfeito.'))return;
+ $('nta').value='';salvaNota();$('nst').textContent='Anotação apagada';
+};
+// ajusta tamanho da letra da anotação na folha A4 para caber no quadro
+function notaPasso(t){
+ const P=[[14,28,60],[12,24,70],[10.5,21,82],[9,18,96]];
+ for(const p of P){
+  const cap=Math.floor(590/p[1]);
+  const linhas=String(t).split('\n').reduce((s,l)=>s+Math.max(1,Math.ceil(l.length/p[2])),0);
+  if(linhas<=cap)return p;
+ }
+ return P[P.length-1];
+}
+
 function show(){
  const w=data[wi];
  $('ddt').textContent='Semana '+(wi+1)+' de 52';markDD();
@@ -470,6 +526,7 @@ function show(){
  const as=w.a.filter(Boolean);as.forEach(x=>ap.append(el('li','',x)));
  $('s-ap').classList.toggle('hide',!as.length);
  $('s-vazio').classList.toggle('hide',!!(w.t||w.r.length||w.f));
+ carregaNota();
  const ft=$('c-ft');ft.textContent='';ft.append(contatos(),copyright());
  $('prev').disabled=wi===0;$('next').disabled=wi===51;
  $('prev').style.opacity=wi===0?.4:1;$('next').style.opacity=wi===51?.4:1;
@@ -642,7 +699,12 @@ function renderSheet(){
  const ol=el('ol');w.a.filter(Boolean).forEach(t=>ol.append(el('li','',t)));a.append(ol);
  if(w.m)a.append(el('div','mes',w.m));
  const ft=el('div','ft');ft.append(contatos(),copyright());a.append(ft);
- const b=el('div','pg');b.append(el('h3','','Anotações'),el('div','lines'));
+ const b=el('div','pg');
+ const nota=lerNota((+$('wk').value||0)+1);
+ let area;
+ if(nota.trim()){area=el('div','lines notas',nota);const p=notaPasso(nota);area.style.fontSize=p[0]+'px';area.style.setProperty('--lh',p[1]+'px')}
+ else area=el('div','lines');
+ b.append(el('h3','','Anotações'),area);
  P.append(a,b);
 }
 $('wk').onchange=()=>{wi=+$('wk').value;show();renderSheet()};
