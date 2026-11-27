@@ -169,9 +169,11 @@ header>div{text-align:center}
 .pg .rd{font-size:.9em;text-align:center}
 .pg .mes{text-align:center;font-style:italic;margin-top:8px;font-size:.9em}
 .pg .ft{margin-top:10px;padding-top:6px;border-top:1px solid #ccc}
+.cpy{font-size:.72rem;color:#64748b;text-align:center;margin-top:6px;line-height:1.35}
+.pg .cpy{font-size:10px}
 .pg .ct{font-size:.78em}
 .pg .ci{color:#222}.pg .ci svg{color:#14357a}
-@media print{html{font-size:16px}.pg{font-size:10pt;height:192mm;overflow:hidden}.lines{height:165mm}}
+@media print{html{font-size:16px}.pg{font-size:10pt;height:192mm;overflow:hidden}.pg .cpy{font-size:7pt}.lines{height:165mm}}
 </style>
 </head>
 <body>
@@ -384,6 +386,8 @@ const IC={
  ig:SV('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>'),
  mail:SV('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>')
 };
+const COPY='© 2027 Pr. Fábio Zambaldi Filgueira / IBM — Todos os direitos reservados.';
+function copyright(){return el('div','cpy',COPY)}
 function contatos(){
  const d=el('div','ct');
  [['tel','IBM: 21 3975-1607'],['wa','WhatsApp: 21 98579-1147'],['ig','@ibmonero'],['mail','secretaria@ibmonero.com']].forEach(x=>{const s=el('span','ci');s.innerHTML=IC[x[0]];s.append(x[1]);d.append(s)});
@@ -466,7 +470,7 @@ function show(){
  const as=w.a.filter(Boolean);as.forEach(x=>ap.append(el('li','',x)));
  $('s-ap').classList.toggle('hide',!as.length);
  $('s-vazio').classList.toggle('hide',!!(w.t||w.r.length||w.f));
- const ft=$('c-ft');ft.textContent='';ft.append(contatos());
+ const ft=$('c-ft');ft.textContent='';ft.append(contatos(),copyright());
  $('prev').disabled=wi===0;$('next').disabled=wi===51;
  $('prev').style.opacity=wi===0?.4:1;$('next').style.opacity=wi===51?.4:1;
 }
@@ -637,7 +641,7 @@ function renderSheet(){
  a.append(el('h4','','Reflexão'),el('p','',w.f||''),el('h4','','Três aplicações para esta semana'));
  const ol=el('ol');w.a.filter(Boolean).forEach(t=>ol.append(el('li','',t)));a.append(ol);
  if(w.m)a.append(el('div','mes',w.m));
- const ft=el('div','ft');ft.append(contatos());a.append(ft);
+ const ft=el('div','ft');ft.append(contatos(),copyright());a.append(ft);
  const b=el('div','pg');b.append(el('h3','','Anotações'),el('div','lines'));
  P.append(a,b);
 }
