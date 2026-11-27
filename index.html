@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="manifest" href="manifest.json"><meta name="theme-color" content="#14357a"><link rel="apple-touch-icon" href="icons/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
@@ -21,7 +22,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a30;--card:#15233f;--tx:#eaf1fa;--mut:#9fb2c8;--ac:#f5c230;--ac2:#8cc4f5;--btn:#2a6fc4;--y:#f5c230;--ln:#25395c;--ok:#6fcf97}}
 :root[data-theme="dark"]{--bg:#0e1a30;--card:#15233f;--tx:#eaf1fa;--mut:#9fb2c8;--ac:#f5c230;--ac2:#8cc4f5;--btn:#2a6fc4;--y:#f5c230;--ln:#25395c;--ok:#6fcf97}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font-family:Georgia,'Times New Roman',serif;line-height:1.6}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;line-height:1.6}
 .w{max-width:620px;margin:0 auto;padding:16px 16px 90px}
 header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 h1{font-size:1.1rem;margin:0;color:var(--ac2)}
@@ -99,28 +100,98 @@ a.chip{border-color:var(--ac);color:var(--ac2)}
 .ftr{margin-top:14px;padding-top:10px;border-top:1px solid var(--ln);font-family:system-ui,sans-serif;font-size:.75rem;color:var(--mut);text-align:center}
 .rrow{display:flex;gap:6px;margin-bottom:6px}.rrow input{flex:1}.rrow button{padding:6px 10px;border:1px solid var(--ln);border-radius:8px;background:var(--card);color:var(--tx);cursor:pointer}
 .pg .mes{text-align:center;font-style:italic;margin-top:8px;font-size:.85em}
+
+:root{--z:1}
+html{font-size:calc(17px*var(--z));-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+body{overflow-wrap:anywhere}
+img{max-width:100%;height:auto}
+button,input,select,textarea{font-family:inherit}
+select{font-size:1rem;max-width:100%}
+header{display:flex;justify-content:center;align-items:center;text-align:center;gap:12px;margin-bottom:6px}
+header>div{text-align:center}
+.adm{text-align:center;margin-bottom:8px}
+.zoom{display:flex;justify-content:center;align-items:center;gap:8px;margin-bottom:10px;font-size:.85rem;color:var(--mut)}
+.zoom button{padding:6px 12px;border:1px solid var(--ln);border-radius:8px;background:var(--card);color:var(--tx);cursor:pointer;font-weight:600}
+.zoom button:disabled{opacity:.4}
+.nav{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.nav button{white-space:normal}
+.dd{grid-column:1 / -1;position:relative;width:calc(240px*var(--z));max-width:90%;margin:0 auto}
+.nav .ddb,.nav3 button{display:flex;justify-content:center;align-items:center;gap:8px;width:100%;box-sizing:border-box;min-height:38px;padding:8px 18px;font-size:.9rem;line-height:1.3;text-align:center;color:var(--ac2);background:transparent;border:1px solid var(--ac);border-radius:8px;cursor:pointer}
+.nav3 button{width:calc(240px*var(--z));max-width:90%;margin:0 auto}
+.ddl{position:absolute;top:calc(100% + 6px);left:0;width:100%;max-height:240px;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:var(--card);border:1px solid var(--ln);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.18);z-index:30;padding:4px}
+.nav .ddi{display:block;width:100%;padding:9px 12px;border:none;border-radius:8px;background:transparent;color:var(--tx);font-size:.9rem;text-align:center;cursor:pointer}
+.nav .ddi.on{background:#14357a;color:#fff;font-weight:700}
+.nav2{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px;font-size:.85rem}
+.nav2 label{display:flex;align-items:center;gap:6px}
+.nav3{display:flex;justify-content:center;margin-bottom:12px}
+.nav2 input{width:64px;text-align:center;padding:6px;border:1px solid var(--ln);border-radius:8px;background:var(--card);color:var(--tx)}
+.nav2 button{padding:6px 14px;border:1px solid var(--ac);border-radius:8px;background:none;color:var(--ac2);cursor:pointer}
+.nav3 button{padding:8px 18px;font-size:.9rem}
+.cs{font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase;color:var(--ac2);font-weight:700;text-align:center;line-height:1.3}
+.cm{display:table;margin:8px auto 6px;font-style:normal;font-size:1.05rem;font-weight:700;text-align:center;color:#fff;background:linear-gradient(90deg,#14357a,#2a8fd8);border:none;border-radius:999px;padding:6px 18px;line-height:1.3}
+.card .date{text-align:center}
+.card h2{text-align:center}
+.hh{text-align:center;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ac2);margin:18px 0 8px;font-weight:700}
+.prog{font-size:.82rem;color:var(--mut);margin:0 0 8px;text-align:center}
+.dia{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--ln);border-radius:10px;margin-bottom:5px;background:var(--bg);font-size:.88rem;line-height:1.35}
+.dia input{width:18px;height:18px;margin:0;flex:none;accent-color:#14357a}
+.dia .dn{font-weight:700;color:var(--ac);flex:none}
+.dia .dl{flex:1;min-width:0}
+.dia .dl a{color:var(--ac2);font-weight:600;text-decoration:underline}
+#s-vs .hh,#s-rf .hh,#s-ap .hh{display:table;margin:18px auto 8px;border-bottom:2px solid #eab308;padding-bottom:2px}
+.dia.ok{opacity:.65}.dia.ok .dl{text-decoration:line-through}
+.dia.hl{outline:2px solid var(--y)}
+.verse,#c-rf,.apps{text-align:left}
+#c-rf{white-space:pre-line;margin:0 0 6px}
+.apps{margin:0 0 12px;padding-left:1.4em}.apps li{margin-bottom:6px}
+.ct{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 14px;text-align:center;font-size:min(.8rem,4.2vw)}
+.ci{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;color:var(--mut)}
+.ci svg{color:var(--ac2);flex:none;width:1.2em;height:1.2em}
+.ftr{margin-top:16px;padding-top:12px;border-top:1px solid var(--ln)}
+.rrow{display:flex;gap:6px;margin-bottom:6px}.rrow input{flex:1}.rrow button{padding:6px 10px;border:1px solid var(--ln);border-radius:8px;background:var(--card);color:var(--tx);cursor:pointer}
+.paper{font-family:inherit}
+.pg{background:#fff;color:#111;font-size:14px;line-height:1.45;padding:16px 18px;border:1.5px solid #14357a;font-family:inherit}
+.pg h3{margin:0 0 4px;font-size:.8em;letter-spacing:.06em;text-align:center;color:#14357a;text-transform:uppercase}
+.pg .c{text-align:center;font-weight:700;font-size:1em}
+.pg .tt{font-style:italic;text-align:center;margin:2px 0 8px;font-size:1.15em}
+.pg h4{display:table;margin:10px auto 4px;font-size:.8em;letter-spacing:.06em;color:#14357a;text-transform:uppercase;border-bottom:2px solid #f5b800}
+.pg p{margin:0 0 6px;text-align:left;white-space:pre-line}
+.pg ol{margin:0;padding-left:1.3em;text-align:left}
+.pg .rd{font-size:.9em;text-align:center}
+.pg .mes{text-align:center;font-style:italic;margin-top:8px;font-size:.9em}
+.pg .ft{margin-top:10px;padding-top:6px;border-top:1px solid #ccc}
+.pg .ct{font-size:.78em}
+.pg .ci{color:#222}.pg .ci svg{color:#14357a}
+@media print{html{font-size:16px}.pg{font-size:10pt;height:192mm;overflow:hidden}.lines{height:165mm}}
 </style>
 </head>
 <body>
 <div class="w">
 <header class="noprint" style="display:flex;justify-content:center;align-items:center;text-align:center"><img src="data:image/png;base64,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" width="52" height="52" alt="Logo IBM" style="border-radius:50%"><div style="text-align:center"><h1>Devocional IBM</h1><div class="sub">Igreja Batista no Moneró</div></div></header>
 <div class="adm noprint"><button class="link hide" id="mode">Modo Equipe / Editor</button></div>
-<div class="motto noprint"><small>TEMA 2027</small>Chamados para servir em uma só família e uma só mesa<span style="display:block;margin-top:8px;font-size:.78rem;font-style:italic;opacity:.92">“…do qual todo o corpo, bem-ajustado e ligado pelo auxílio de todas as juntas, segundo a justa operação de cada parte, faz o aumento do corpo, para sua edificação em amor.” (Efésios 4:16, ARC)</span></div>
+<div class="motto noprint"><small>TEMA 2027</small>Chamados para servir em uma só família e uma só mesa<span style="display:block;margin-top:8px;font-size:.78rem;font-style:italic;opacity:.92">“…do qual todo o corpo, bem-ajustado e ligado pelo auxílio de todas as juntas, segundo a justa operação de cada parte, faz o aumento do corpo, para sua edificação em amor.” (Efésios 4:16)</span></div>
 <div class="tabs noprint"><button id="t1" class="on">📖 Devocional da semana</button><button id="t2">🖨️ Folha para imprimir</button></div>
 
 <main id="view" class="noprint">
+ <div class="zoom"><span>Letra:</span><button id="zm" aria-label="Diminuir letra">A-</button><button id="zr" aria-label="Voltar para 100%">100%</button><button id="zp" aria-label="Aumentar letra">A+</button></div>
  <div class="nav">
   <button id="prev">‹ Semana Anterior</button>
-  <select id="wsel" aria-label="Semana"></select>
   <button id="next">Próxima Semana ›</button>
+  <div class="dd" id="dd"><button type="button" class="ddb" id="ddb" aria-haspopup="listbox" aria-expanded="false"><span id="ddt">Semana 1 de 52</span><span aria-hidden="true">▾</span></button><div class="ddl hide" id="ddl" role="listbox" aria-label="Semanas"></div></div>
  </div>
+ <div class="nav2">
+  <label>Ir para o dia <input type="number" id="dj" min="1" max="365" inputmode="numeric"></label>
+  <button id="dgo">Ir</button>
+ </div>
+ <div class="nav3"><button id="dcont">Continuar de onde parei</button></div>
  <article class="card">
   <div class="cs" id="c-serie"></div>
   <div class="cm" id="c-mes"></div>
   <div class="date" id="c-sem"></div>
   <h2 id="c-tit"></h2>
-  <div id="s-plano"><div class="hh">📅 Plano de leitura da semana</div><div id="c-plano"></div></div>
-  <div id="s-vs"><blockquote class="verse" style="margin-left:0"><span id="c-vs"></span> <span id="c-vr"></span></blockquote></div>
+  <div id="s-plano"><div class="hh">📅 Leituras da semana</div><div class="prog" id="prog"></div><div id="c-plano"></div></div>
+  <div id="s-vs"><div class="hh">Versículo</div><blockquote class="verse" style="margin-left:0"><span id="c-vs"></span> <span id="c-vr"></span></blockquote></div>
   <div id="s-rf"><div class="hh">Reflexão</div><p id="c-rf"></p></div>
   <div id="s-ap"><div class="hh">Três aplicações para esta semana</div><ol class="apps" id="c-ap"></ol></div>
   <div id="s-vazio" class="mut hide">Esta semana ainda não foi preenchida.</div>
@@ -146,7 +217,7 @@ a.chip{border-color:var(--ac);color:var(--ac2)}
   <b>🖨️ Folha para imprimir</b><br>
   <label>Semana: <select id="wk"></select></label>
   <button id="pbtn">Imprimir / Salvar PDF</button>
-  <p class="mut">Imprima em A4 na horizontal e dobre ao meio: a metade da esquerda traz a devocional da semana e a da direita fica para anotações.</p>
+  <p class="mut">Imprima em A4 na horizontal e dobre ao meio: a metade da esquerda traz a devocional da semana e a da direita fica para anotações. O zoom da tela não altera a folha.</p>
  </div>
  <div class="paper" id="paper"></div>
 </section>
@@ -169,10 +240,11 @@ a.chip{border-color:var(--ac);color:var(--ac2)}
  </div>
  <div class="box f hide" id="form">
   <b id="fh">Editando</b>
-  <label>Mês / Subtema</label><input id="e-m">
+  <label>Tema do mês (sem o número do mês)</label><input id="e-m">
   <label>Período (ex: 4 a 8)</label><input id="e-p">
   <label>Título</label><input id="e-t">
-  <label>Dias de leitura (ex: Gênesis 1,2) – o link da Bíblia é criado automaticamente</label>
+  <label>Número do primeiro dia da semana (1 a 365)</label><input id="e-d" type="number" min="1" max="365">
+  <label>Leituras de cada dia (ex: Gênesis 1, 2). Use ; para mais de uma passagem no mesmo dia. Os links da Bíblia são criados sozinhos.</label>
   <div id="e-r"></div><button type="button" id="e-radd" style="padding:8px 12px;border-radius:8px;border:1px solid var(--ac);background:none;color:var(--ac2);cursor:pointer">+ Adicionar dia</button>
   <label>Versículo (sem aspas)</label><textarea id="e-v"></textarea>
   <label>Referência do versículo (ex: Marcos 10.35)</label><input id="e-vr">
@@ -198,66 +270,78 @@ const INICIO=new Date(2027,0,4); // início da Semana 1 (segunda, 04/01/2027)
 const LIVROS=[['gn','Gênesis','gen'],['ex','Êxodo','exo'],['lv','Levítico','lev'],['nm','Números','num'],['dt','Deuteronômio','deut'],['js','Josué','jos'],['jz','Juízes'],['rt','Rute'],['1sm','1 Samuel','1sam'],['2sm','2 Samuel','2sam'],['1rs','1 Reis','1re'],['2rs','2 Reis','2re'],['1cr','1 Crônicas','1cron'],['2cr','2 Crônicas','2cron'],['ed','Esdras','esd'],['ne','Neemias','nee'],['et','Ester','est'],['job','Jó'],['sl','Salmos','salmo','sal'],['pv','Provérbios','prov'],['ec','Eclesiastes','ecl'],['ct','Cantares de Salomão','cantares','canticos','cantico dos canticos'],['is','Isaías','isa'],['jr','Jeremias','jer'],['lm','Lamentações','lam'],['ez','Ezequiel','eze'],['dn','Daniel','dan'],['os','Oséias'],['jl','Joel'],['am','Amós'],['ob','Obadias','abdias'],['jn','Jonas'],['mq','Miquéias','miq'],['na','Naum'],['hc','Habacuque','hab'],['sf','Sofonias','sof'],['ag','Ageu'],['zc','Zacarias','zac'],['ml','Malaquias','mal'],['mt','Mateus','mat'],['mc','Marcos','mar'],['lc','Lucas','luc'],['jo','João'],['at','Atos','atos dos apostolos'],['rm','Romanos','rom'],['1co','1 Coríntios','1cor'],['2co','2 Coríntios','2cor'],['gl','Gálatas','gal'],['ef','Efésios','efe'],['fp','Filipenses','fil'],['cl','Colossenses','col'],['1ts','1 Tessalonicenses','1tes'],['2ts','2 Tessalonicenses','2tes'],['1tm','1 Timóteo','1tim'],['2tm','2 Timóteo','2tim'],['tt','Tito'],['fm','Filemom','filemon'],['hb','Hebreus','heb'],['tg','Tiago','tia'],['1pe','1 Pedro','1ped'],['2pe','2 Pedro','2ped'],['1jo','1 João','1joao'],['2jo','2 João','2joao'],['3jo','3 João','3joao'],['jd','Judas'],['ap','Apocalipse','apo']];
 const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
 const LV={};LIVROS.forEach(l=>{LV[norm(l[0])]=l[0];l.slice(1).forEach(n=>{LV[norm(n)]=l[0]})});
-function bibLink(p){
- const m=String(p||'').trim().match(/^((?:[1-3]\s*)?[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)*)\s+(\d+)/);
+function bibRef(p){
+ const m=String(p||'').trim().match(/^((?:[1-3]\s*)?[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)*)(?:\s+(\d+))?/);
  if(!m)return null;
  const nome=m[1].trim();
  const sig=/^jó$/i.test(nome)?'job':LV[norm(nome)];
- return sig?'https://www.bibliaonline.com.br/ara/'+sig+'/'+m[2]:null;
+ return sig?{sig:sig,cap:m[2]||'1'}:null;
+}
+const bibUrl=r=>r?'https://www.bibliaonline.com.br/ara/'+r.sig+'/'+r.cap:null;
+function bibLink(p){return bibUrl(bibRef(p))}
+// separa "Livro 1, 2; 5-7; Outro 3" em partes; partes só com números herdam o livro anterior
+function bibPartes(texto){
+ let ult=null;
+ return String(texto||'').split(';').map(x=>x.trim()).filter(Boolean).map(x=>{
+  let r=bibRef(x);
+  if(!r){const n=x.match(/^(\d+)/);if(n&&ult)r={sig:ult,cap:n[1]}}
+  if(r)ult=r.sig;
+  return {t:x,u:bibUrl(r)};
+ });
 }
 const WEEKS=[
-{"s":1,"m":"Mês 1 — O Chamado: 'Não Vim para Ser Servido'","p":"4 a 8","t":"O cheque em branco","r":["Gênesis 1,2","Gênesis 3-5","Gênesis 6-9","Gênesis 10,11","Gênesis 12-15","Gênesis 16-19","Gênesis 20-22","Gênesis 23-26"],"v":"Mestre, queremos que nos conceda o que te vamos pedir.","vr":"Marcos 10.35","f":"Tiago e João não pediram, exigiram. Confundiram intimidade com direito. Quantas vezes nossa oração tem a mesma estrutura: “Senhor, faça o que eu pedir”?","a":["Escreva sua oração mais urgente desta semana e pergunte: estou pedindo ou exigindo?","Antes de pedir algo a Deus hoje, agradeça por três coisas.","Ore uma vez dizendo apenas: “Senhor, o que Tu queres?”"]},
-{"s":2,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":3,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":4,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":5,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":6,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":7,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":8,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":9,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":10,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":11,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":12,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":13,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":14,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":15,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":16,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":17,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":18,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":19,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":20,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":21,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":22,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":23,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":24,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":25,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":26,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":27,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":28,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":29,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":30,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":31,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":32,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":33,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":34,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":35,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":36,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":37,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":38,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":39,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":40,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":41,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":42,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":43,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":44,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":45,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":46,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":47,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":48,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":49,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":50,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":51,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]},
-{"s":52,"m":"","p":"","t":"","r":[],"v":"","vr":"","f":"","a":["","",""]}
+{"s":1,"d":1,"m":"O Chamado: Não Vim para Ser Servido","p":"4 a 8","t":"O cheque em branco","r":["Gênesis 1, 2","Gênesis 3-5","Gênesis 6-9","Gênesis 10, 11","Gênesis 12-15","Gênesis 16-19","Gênesis 20-22","Gênesis 23-26"],"v":"Mestre, queremos que nos concedas o que te vamos pedir.","vr":"Marcos 10.35","f":"Tiago e João não pediram, exigiram. Confundiram intimidade com direito. Quantas vezes nossa oração tem a mesma estrutura: “Senhor, faça o que eu pedir”?","a":["Escreva sua oração mais urgente desta semana e pergunte: estou pedindo ou exigindo?","Antes de pedir algo a Deus hoje, agradeça por três coisas.","Ore uma vez dizendo apenas: “Senhor, o que Tu queres?”"]},
+{"s":2,"d":9,"m":"O Chamado: Não Vim para Ser Servido","p":"11 a 15","t":"O cálice antes do trono","r":["Gênesis 27-29","Gênesis 30-32","Gênesis 33-36","Gênesis 37-39","Gênesis 40-42","Gênesis 43-46","Gênesis 47-50"],"v":"Podeis beber o cálice que eu bebo?","vr":"Marcos 10.38","f":"Eles queriam a coroa sem o Getsêmani. Jesus não nega a glória; reordena o caminho. Não existe atalho para a glória no Reino.","a":["Identifique uma área em que você quer o resultado sem o processo.","Escolha uma disciplina pequena e cumpra-a todos os dias desta semana.","Escreva o que você está disposto a perder para seguir Cristo de perto."]},
+{"s":3,"d":16,"m":"O Chamado: Não Vim para Ser Servido","p":"18 a 22","t":"A indignação que revela","r":["Jó 1-4","Jó 5-7","Jó 8-10","Jó 11-13","Jó 14-17","Jó 18-20","Jó 21-24"],"v":"Quando os dez ouviram isto, começaram a indignar-se contra Tiago e João.","vr":"Marcos 10.41","f":"Os dez não se indignaram com a ambição, indignaram-se porque a ambição não era deles. É a mesma doença com outra máscara.","a":["Observe esta semana o que te incomoda no sucesso dos outros.","Ore por alguém que você tem dificuldade de celebrar.","Envie uma mensagem de parabéns sincera a alguém que foi promovido ou reconhecido."]},
+{"s":4,"d":23,"m":"O Chamado: Não Vim para Ser Servido","p":"25 a 29","t":"A grandeza que desce","r":["Jó 25-27","Jó 28-31","Jó 32-34","Jó 35-37","Jó 38-42","Êxodo 1-4","Êxodo 5-7"],"v":"Quem quiser tornar-se grande entre vós, será esse o que vos sirva.","vr":"Marcos 10.43","f":"O mundo diz que grandeza é ter muitos servindo você. O Reino diz que grandeza é você servindo muitos. A lógica é invertida.","a":["Faça uma tarefa que ninguém vê e ninguém agradece.","Teste sua interrompibilidade: aceite uma interrupção sem demonstrar impaciência.","Escolha uma pessoa para servir esta semana sem que ela saiba."]},
+{"s":5,"d":30,"m":"A Mesa: A Mesa Antes do Púlpito","p":"1 a 5","t":"Saber quem é","r":["Êxodo 8-10","Êxodo 11-13","Êxodo 14-17","Êxodo 18-20","Êxodo 21-24","Êxodo 25-27","Êxodo 28-31"],"v":"Jesus, sabendo que o Pai lhe entregara todas as coisas nas mãos... levantou-se da ceia.","vr":"João 13.3-4","f":"Jesus lava os pés porque sabe quem é. A segurança de identidade liberta para servir. Quem duvida de si precisa de plateia; quem sabe quem é pode servir no anonimato.","a":["Escreva três verdades sobre quem você é em Cristo.","Sirva hoje sem mencionar a ninguém o que fez.","Recuse elogio em pelo menos uma ocasião esta semana, redirecionando a glória a Deus."]},
+{"s":6,"d":37,"m":"A Mesa: A Mesa Antes do Púlpito","p":"8 a 12","t":"Levantar-se da mesa","r":["Êxodo 32-34","Êxodo 35-37","Êxodo 38-40","Levítico 1-4","Levítico 5-7","Levítico 8-10","Levítico 11-13"],"v":"Levantou-se da ceia, tirou o manto, tomou uma toalha e cingiu-se.","vr":"João 13.4","f":"Serviço exige movimento. Jesus não serviu do trono, levantou-se. Servir é sair do lugar confortável.","a":["Levante-se fisicamente para ajudar alguém esta semana.","Ofereça-se para uma função que você normalmente evita.","Visite alguém que você não visita há mais de três meses."]},
+{"s":7,"d":44,"m":"A Mesa: A Mesa Antes do Púlpito","p":"15 a 19","t":"A toalha de Judas","r":["Levítico 14-16","Levítico 17-19","Levítico 20-22; Salmo 95","Levítico 23-27","Números 1-3","Números 4-6","Números 7-10"],"v":"Depois deitou água na bacia e começou a lavar os pés dos discípulos.","vr":"João 13.5","f":"Jesus lavou os pés de quem o trairia. O serviço cristão não é resposta ao mérito de quem recebe, é expressão da natureza de quem serve.","a":["Sirva alguém que não retribui e não retribuirá.","Ore por uma pessoa que feriu você.","Faça um bem a alguém que não sabe que você é cristão."]},
+{"s":8,"d":51,"m":"A Mesa: A Mesa Antes do Púlpito","p":"22 a 26","t":"O exemplo que obriga","r":["Números 11-12:16; Salmo 90","Salmo 91; Números 12-14","Números 15-17","Números 18-20","Números 21-24","Números 25-27","Números 28-30"],"v":"Ora, se eu, sendo o Senhor e o Mestre, vos lavei os pés, também vós deveis lavar os pés uns dos outros.","vr":"João 13.14","f":"“Deveis” não é sugestão. O exemplo de Cristo não inspira apenas, obriga.","a":["Ensine alguém mais novo a servir, fazendo junto.","Assuma uma tarefa na igreja que ninguém quer.","Escreva um compromisso de serviço para os próximos três meses."]},
+{"s":9,"d":58,"m":"A Família: Servir é Pertencer","p":"1 a 5","t":"Um corpo, muitos membros","r":["Números 31-33","Números 34-36","Deuteronômio 1-3","Deuteronômio 4-6","Deuteronômio 7-9","Deuteronômio 10-12","Deuteronômio 13-16"],"v":"Porque, assim como o corpo é um e tem muitos membros... assim também Cristo.","vr":"1 Coríntios 12.12","f":"Diversidade não é acidente, é projeto. A igreja não precisa de uniformidade, precisa de unidade.","a":["Identifique seu dom principal e escreva-o.","Procure alguém com dom diferente do seu e aprenda com ele.","Agradeça a Deus por uma pessoa da igreja que pensa diferente de você."]},
+{"s":10,"d":65,"m":"A Família: Servir é Pertencer","p":"8 a 12","t":"A mentira da inutilidade","r":["Deuteronômio 17-19","Deuteronômio 20-22","Deuteronômio 23-25","Deuteronômio 26-28","Deuteronômio 29-31","Deuteronômio 32-34","Josué 1-3"],"v":"Se o pé disser: Visto que não sou mão, não sou do corpo; nem por isso deixa de ser do corpo.","vr":"1 Coríntios 12.15","f":"O inimigo não precisa te convencer de que Deus não existe, basta convencê-lo de que você não serve para nada.","a":["Escreva uma mentira que você acredita sobre si mesmo.","Peça a alguém de confiança que diga qual dom ele vê em você.","Assuma um serviço pequeno esta semana, mesmo achando que não é capaz."]},
+{"s":11,"d":72,"m":"A Família: Servir é Pertencer","p":"15 a 19","t":"A mentira da autossuficiência","r":["Josué 4-6","Josué 7-9","Josué 10-12","Josué 13-15","Josué 16-18","Josué 19-21","Josué 22-24"],"v":"Não podem os olhos dizer à mão: Não precisamos de ti; nem ainda a cabeça, aos pés: não preciso de vós.","vr":"1 Coríntios 12.21","f":"Ninguém é tão forte que não precise do outro. A autossuficiência é uma forma elegante de orgulho.","a":["Peça ajuda em algo que você sempre faz sozinho.","Reconheça publicamente a contribuição de alguém.","Ore por uma pessoa de quem você depende e nunca agradeceu."]},
+{"s":12,"d":79,"m":"A Família: Servir é Pertencer","p":"22 a 26","t":"Membros que sofrem juntos","r":["Juízes 1-4","Juízes 5-8","Juízes 9-12","Juízes 13-15","Juízes 16-18","Juízes 19-21","Rute 1-4"],"v":"Se um membro padece, todos os membros padecem com ele.","vr":"1 Coríntios 12.26","f":"Pertencer é sofrer junto. A igreja não é um clube de pessoas bem-sucedidas, é um corpo que sente.","a":["Descubra quem está sofrendo na sua comunidade e vá até essa pessoa.","Chore com alguém — não aconselhe, apenas escute.","Envie uma mensagem de apoio a alguém que está em luto ou crise."]},
+{"s":13,"d":86,"m":"A Mesa: Perseveravam","p":"29 a 2","t":"Na doutrina","r":["1 Samuel 1-4","1 Samuel 5-8","1 Samuel 9-12","1 Samuel 13-16","1 Samuel 17, 18; Salmo 23","1 Samuel 19:1-18; Salmos 11, 59","1 Samuel 19:19-24; 20, 21; Salmos 56, 142"],"v":"Perseveravam na doutrina dos apóstolos.","vr":"Atos 2.42","f":"A primeira coluna da igreja é a verdade. Comunidade sem doutrina vira apenas convivência.","a":["Leia um capítulo da Bíblia por dia nesta semana.","Escreva uma dúvida doutrinária e busque resposta com seu pastor.","Ensine um princípio bíblico que você aprendeu a alguém."]},
+{"s":14,"d":93,"m":"A Mesa: Perseveravam","p":"5 a 9","t":"Na comunhão","r":["1 Samuel 22; Salmos 17, 34, 35","Salmos 52, 109, 140","Salmos 31, 64; 1 Samuel 23:1-29","Salmos 54, 22; 1 Samuel 24","Salmos 63, 12, 57","Salmos 58, 120; 1 Samuel 25","Salmo 141; 1 Samuel 26, 27"],"v":"Perseveravam... na comunhão.","vr":"Atos 2.42","f":"Perseverar na comunhão é difícil porque pessoas são difíceis. Mas é exatamente por isso que a comunhão é santa.","a":["Converse com alguém da igreja por mais de 20 minutos esta semana.","Perdoe uma ofensa pequena que você guardou.","Convide alguém para sua casa ou para uma refeição."]},
+{"s":15,"d":100,"m":"A Mesa: Perseveravam","p":"12 a 16","t":"No partir do pão","r":["1 Samuel 28, 29, 30","1 Samuel 31; 2 Samuel 1, 2","Salmo 101; 2 Samuel 3, 4","2 Samuel 5; Salmo 139; 2 Samuel 6","Salmos 78, 96","Salmos 15, 24, 68","Salmos 132, 133"],"v":"Perseveravam... no partir do pão.","vr":"Atos 2.42","f":"A mesa é o centro da vida comunitária. Comer junto é um ato espiritual.","a":["Faça uma refeição com alguém que mora sozinho.","Participe da Ceia com atenção consciente ao que ela significa.","Ore antes de todas as refeições desta semana, em família."]},
+{"s":16,"d":107,"m":"A Mesa: Perseveravam","p":"19 a 23","t":"Nas orações","r":["Salmos 106, 105","2 Samuel 7; Salmos 16, 2","Salmo 110; 2 Samuel 8; Salmos 97, 98","Salmos 108, 117, 118","Salmos 60, 9, 20","2 Samuel 9, 10, 11","2 Samuel 12; Salmos 6, 32"],"v":"Perseveravam... nas orações.","vr":"Atos 2.42","f":"A quarta coluna é a dependência. Igreja que não ora é igreja que confia em si mesma.","a":["Separe 15 minutos diários de oração, sem celular.","Ore por nome por cinco pessoas da igreja.","Participe de um encontro de oração coletiva."]},
+{"s":17,"d":114,"m":"A Mesa: Repartiam Segundo a Necessidade","p":"26 a 30","t":"Tudo em comum","r":["Salmos 33, 38, 39, 21","Salmos 40, 41, 51","Salmos 103, 104; 2 Samuel 13","Salmos 55; 2 Samuel 14, 15","2 Samuel 16; Salmo 7; 2 Samuel 17","Salmos 3, 4, 42","Salmos 43, 5, 8"],"v":"Todos os que criam estavam juntos e tinham tudo em comum.","vr":"Atos 2.44","f":"A lógica da mordomia, não do comunismo: o que tenho não é meu, é confiado a mim para o bem de outros.","a":["Faça um inventário do que você tem e não usa.","Doe algo que você gostaria de guardar.","Ensine seus filhos a repartir, não apenas a receber."]},
+{"s":18,"d":121,"m":"A Mesa: Repartiam Segundo a Necessidade","p":"3 a 7","t":"Segundo a necessidade","r":["Salmos 28, 61, 62","Salmos 69, 70, 71, 86","Salmo 143; 2 Samuel 18, 19","Salmos 122, 26, 27","Salmos 141, 65; 2 Samuel 20","2 Samuel 21; Salmos 29, 30","Salmos 131, 18; 2 Samuel 22-24; 1 Reis 1"],"v":"Repartiam com todos, segundo a necessidade de cada um.","vr":"Atos 2.45","f":"A justiça concreta do cuidado. Não é repartir igualmente, é repartir segundo a necessidade.","a":["Descubra uma necessidade real de alguém da igreja.","Supra essa necessidade sem contar a ninguém.","Pergunte a três pessoas: “Do que você precisa hoje?”"]},
+{"s":19,"d":128,"m":"A Mesa: Repartiam Segundo a Necessidade","p":"10 a 14","t":"Com alegria e singeleza","r":["Salmos 72, 145; 1 Reis 2","1 Reis 3, 4, 5","Salmos 99, 100, 127, 128","Provérbios 1-4","Provérbios 5-7","Provérbios 8-11","Provérbios 12-15"],"v":"Partindo o pão em casa, comiam com alegria e singeleza de coração.","vr":"Atos 2.46","f":"A motivação santifica a ação. Servir com má vontade não é servir, é cumprir tabela.","a":["Faça uma tarefa que você detesta, mas com alegria consciente.","Sorria ao servir, mesmo cansado.","Agradeça a Deus por poder servir, antes de reclamar do serviço."]},
+{"s":20,"d":135,"m":"A Mesa: Repartiam Segundo a Necessidade","p":"17 a 21","t":"Comunhão que chega ao bolso","r":["Provérbios 16-19","Provérbios 20-23","Provérbios 24-27","Provérbios 28-30","Provérbios 31; Eclesiastes 1, 2","Eclesiastes 3-5","Eclesiastes 6-8"],"v":"Ninguém considerava exclusivamente sua nenhuma das coisas que possuía.","vr":"Atos 4.32","f":"Comunhão que não chega ao bolso não chegou ao coração. A carteira é um termômetro espiritual.","a":["Revise seus gastos da semana e identifique excessos.","Estabeleça um valor mensal para ajudar alguém.","Faça um sacrifício financeiro real por outra pessoa."]},
+{"s":21,"d":142,"m":"A Mesa: A Mesa que Inclui","p":"24 a 28","t":"A mesa interesseira","r":["Eclesiastes 9-11","Eclesiastes 12; Cantares 1, 2","Cantares 3-5","Cantares 6-8","1 Reis 6-8","1 Reis 9-11","1 Reis 12-14"],"v":"Quando deres um banquete, não convides os teus amigos, nem os teus irmãos, nem os teus parentes, nem vizinhos ricos.","vr":"Lucas 14.12","f":"Convidamos quem pode retribuir. Jesus nos chama a convidar quem não pode.","a":["Liste as pessoas que você sempre convida — todas podem retribuir?","Convide alguém que não pode retribuir.","Faça algo por alguém que não saberá agradecer."]},
+{"s":22,"d":149,"m":"A Mesa: A Mesa que Inclui","p":"31 a 4","t":"A mesa dos improváveis","r":["1 Reis 15-17","1 Reis 18-20","1 Reis 21, 22; 2 Reis 1","2 Reis 2-4","2 Reis 5-7","2 Reis 8-10","2 Reis 11-14:20"],"v":"Convida os pobres, os aleijados, os coxos e os cegos.","vr":"Lucas 14.13","f":"A mesa do Reino é escandalosamente aberta. Quem não convidaríamos é exatamente quem Jesus convida.","a":["Pense em quem você nunca convidaria para sua mesa.","Ore por essa pessoa por nome esta semana.","Dê um passo concreto para se aproximar dela."]},
+{"s":23,"d":156,"m":"A Mesa: A Mesa que Inclui","p":"7 a 11","t":"A insistência do anfitrião","r":["Joel 1-3","2 Reis 14:21-25; Jonas 1-4","2 Reis 14:26-29; Amós 1-3","Amós 4-6","Amós 7-9","2 Reis 15-17","Oseias 1-4"],"v":"Sai pelos caminhos e valados e obriga-os a entrar, para que se encha a minha casa.","vr":"Lucas 14.23","f":"Deus insiste. Ele não desiste de quem ainda não veio. Nossa missão é a mesma insistência.","a":["Convide alguém para o culto esta semana.","Não desista de alguém que já disse “não” uma vez.","Ore por três pessoas que ainda não conhecem Cristo."]},
+{"s":24,"d":163,"m":"A Mesa: A Mesa que Inclui","p":"14 a 18","t":"Abrir a casa, abrir a mesa","r":["Oseias 5-7","Oseias 8-10","Oseias 11-14","2 Reis 18; Salmo 44","2 Reis 19:1-34; Salmo 73","2 Reis 19:35-37; Salmos 92, 93","Salmos 46, 75, 76"],"v":"Abrirás a tua alma ao faminto.","vr":"Isaías 58.10","f":"Hospitalidade não é receber bem, é receber quem precisa. Casa aberta é coração aberto.","a":["Abra sua casa para uma refeição comunitária.","Ofereça sua mesa a alguém que come sozinho.","Envolva-se numa ação de acolhimento da igreja."]},
+{"s":25,"d":170,"m":"A Família: Uma Só Família","p":"21 a 25","t":"A parede que existia","r":["Isaías 1-3","Isaías 4-6","Isaías 7-9","Isaías 10-13","Isaías 14-17","Isaías 18-21","Isaías 22-25"],"v":"Naquele tempo, estáveis sem Cristo... separados.","vr":"Efésios 2.12","f":"Antes de Cristo havia separação real, não imaginária. Reconhecer a parede é o primeiro passo para celebrar a cruz.","a":["Identifique uma parede que você mesmo construiu.","Peça perdão a alguém de quem se afastou.","Reconheça em oração de onde Deus o tirou."]},
+{"s":26,"d":177,"m":"A Família: Uma Só Família","p":"28 a 2","t":"A paz que derruba","r":["Isaías 26-28","Isaías 29-30","Isaías 31-33","Isaías 34-36","Isaías 37-39","Isaías 40-42","Isaías 43-45"],"v":"Ele é a nossa paz, o qual de ambos fez um e derrubou a parede de separação.","vr":"Efésios 2.14","f":"A cruz não apenas perdoa, demole. Ela destrói a hostilidade, não apenas a culpa.","a":["Estenda a paz a alguém com quem você tem hostilidade.","Rejeite um pensamento preconceituoso esta semana.","Ore por uma pessoa de origem, classe ou cultura diferente da sua."]},
+{"s":27,"d":184,"m":"A Família: Uma Só Família","p":"5 a 9","t":"A casa que se constrói","r":["Isaías 46-48","Isaías 49-51","Isaías 52-54","Isaías 55-57","Isaías 58-60","Isaías 61-63","Isaías 64-66"],"v":"Sois concidadãos dos santos e membros da família de Deus.","vr":"Efésios 2.19","f":"A família de Deus não é biológica nem cultural, é reconciliada. Somos família porque fomos adotados.","a":["Trate alguém da igreja como parente, não como conhecido.","Participe de um encontro intergeracional.","Adote espiritualmente alguém mais novo na fé."]},
+{"s":28,"d":191,"m":"A Família: Uma Só Família","p":"12 a 16","t":"Habitação de Deus","r":["Miqueias 1-4","Miqueias 5-7","Naum 1-3","2 Reis 20, 21","Sofonias 1-3","Habacuque 1-3","2 Reis 22-23; Salmo 74"],"v":"No qual também vós juntamente sois edificados para morada de Deus no Espírito.","vr":"Efésios 2.22","f":"A igreja é o templo em que adoramos a Deus. Cada filho de Deus é morada de Deus. Ninguém é edificado sozinho.","a":["Pergunte: que pedra eu sou nesta casa?","Conserte uma rachadura: uma relação quebrada na igreja.","Comprometa-se com presença constante, não esporádica."]},
+{"s":29,"d":198,"m":"A Família: Honra e Transmissão","p":"19 a 23","t":"O Shemá","r":["Salmos 79, 94; 2 Reis 24:1-16","Salmo 88; 2 Reis 24:17-20, 25","Obadias; Jeremias 1, 2","Jeremias 3-5","Jeremias 6-8","Jeremias 9-12","Jeremias 13; Salmos 13, 14"],"v":"Ouve, Israel, o Senhor nosso Deus é o único Senhor.","vr":"Deuteronômio 6.4","f":"Antes de ensinar, é preciso ouvir. A fé começa na escuta, não no discurso.","a":["Leia o Shemá em voz alta todos os dias desta semana.","Ensine alguém a dizê-lo de memória.","Silencie diante de Deus por cinco minutos antes de orar."]},
+{"s":30,"d":205,"m":"A Família: Honra e Transmissão","p":"26 a 30","t":"Ensinarás a teus filhos","r":["Salmos 36, 37, 49","Salmos 53, 77, 89","Salmo 123","Salmos 25, 50, 67","Salmos 102, 130","Jeremias 14-16","Jeremias 17-20"],"v":"E as ensinarás a teus filhos, e delas falarás assentado em tua casa, e andando pelo caminho.","vr":"Deuteronômio 6.7","f":"A fé não se transmite por programa, mas por presença repetida nos espaços comuns da vida.","a":["Faça um devocional em família, mesmo que de cinco minutos.","Conte a alguém mais novo uma história de como Deus agiu na sua vida.","Ensine pelo exemplo, não apenas pela palavra."]},
+{"s":31,"d":212,"m":"A Família: Honra e Transmissão","p":"2 a 6","t":"Nos umbrais e nas portas","r":["Jeremias 21-23","Jeremias 24-26","Jeremias 27-29","Jeremias 30-32","Jeremias 33-36","Jeremias 37-39","Jeremias 40-42"],"v":"Também as atarás por sinal na tua mão, e te serão por frontais entre os teus olhos.","vr":"Deuteronômio 6.8","f":"A fé que marca os lugares. Sua casa tem uma devocional ou direcionamento espiritual? O que sua família repete sem perceber?","a":["Coloque um versículo visível em sua casa.","Estabeleça um ritual familiar de oração.","Pergunte a seus filhos o que eles percebem da sua fé."]},
+{"s":32,"d":219,"m":"A Família: Honra e Transmissão","p":"9 a 13","t":"Honra e transmissão","r":["Jeremias 43-46","Jeremias 47-49","Jeremias 50-52","Lamentações 1-5","1 Crônicas 1-3","1 Crônicas 4-6","1 Crônicas 7-9"],"v":"Eu e a minha casa serviremos ao Senhor.","vr":"Josué 24.15","f":"A fé é decisão, não herança automática. Cada geração precisa escolher.","a":["Declare em voz alta, diante da família, sua decisão de servir.","Honre publicamente seus pais e avós.","Abençoe seus filhos com uma oração específica."]},
+{"s":33,"d":226,"m":"A Família: Servir em Casa Primeiro","p":"16 a 20","t":"Prover e cuidar","r":["1 Crônicas 10-13","1 Crônicas 14-16","1 Crônicas 17-19","1 Crônicas 20-23","1 Crônicas 24-26","1 Crônicas 27-29","2 Crônicas 1-3"],"v":"Se alguém não cuida dos seus, e especialmente dos da sua família, negou a fé.","vr":"1 Timóteo 5.8","f":"A responsabilidade familiar é um ato espiritual, não apenas material. Fé que não passa pelo lar é performance.","a":["Avalie se você tem cuidado ou apenas sustentado sua família.","Pergunte a cada pessoa da casa: “O que você precisa de mim?”","Faça algo concreto pelo bem-estar de um familiar esta semana."]},
+{"s":34,"d":233,"m":"A Família: Servir em Casa Primeiro","p":"23 a 27","t":"Escolher servir","r":["2 Crônicas 4-6","2 Crônicas 7-9","2 Crônicas 10-13","2 Crônicas 14-16","2 Crônicas 17-19","Salmo 82; 2 Crônicas 20; Salmo 83","Salmos 47, 48, 115"],"v":"Escolhei hoje a quem sirvais... eu e a minha casa serviremos ao Senhor.","vr":"Josué 24.15","f":"Servir é escolha renovada, não decisão única. Todo dia é dia de escolher de novo.","a":["Renove hoje sua decisão de servir a Deus.","Escolha servir sua família em algo específico.","Escreva uma decisão que você tomou e abandonou; retome-a."]},
+{"s":35,"d":240,"m":"A Família: Servir em Casa Primeiro","p":"30 a 3","t":"O lar como primeira igreja","r":["2 Crônicas 21-24","2 Crônicas 25-27","2 Crônicas 28, 29; Salmo 80","2 Crônicas 30-32","2 Crônicas 33-36","Ezequiel 1-3","Ezequiel 4-7"],"v":"Estas palavras que hoje te ordeno estarão no teu coração.","vr":"Deuteronômio 6.6","f":"Antes de ser igreja para a comunidade, você é igreja em casa. O lar é o primeiro altar.","a":["Ore com sua família em voz alta esta semana.","Leia a Bíblia em casa, não apenas no culto.","Trate sua família com a mesma cortesia com que trata os irmãos da igreja."]},
+{"s":36,"d":247,"m":"A Família: Servir em Casa Primeiro","p":"6 a 10","t":"Como você trata quem mora na mesma casa","r":["Ezequiel 8-11","Ezequiel 12-14","Ezequiel 15-18","Ezequiel 19-21","Ezequiel 22-24","Ezequiel 25-27","Ezequiel 28-30"],"v":"Se alguém não ama a seu irmão, a quem vê, não pode amar a Deus, a quem não vê.","vr":"1 João 4.20","f":"O teste mais honesto da sua fé está na cozinha, não no púlpito, na liderança ou na igreja.","a":["Peça perdão a alguém de sua casa por algo específico.","Faça um gesto de serviço em casa sem ser pedido.","Passe uma refeição inteira sem celular, só conversando."]},
+{"s":37,"d":254,"m":"O Envio: Enviados da Mesa","p":"13 a 17","t":"O novo mandamento","r":["Ezequiel 31-33","Ezequiel 34-36","Ezequiel 37-39","Ezequiel 40-42","Ezequiel 43-45","Ezequiel 46-48","Daniel 1-3"],"v":"Um novo mandamento vos dou: que vos ameis uns aos outros.","vr":"João 13.34","f":"O amor que nos identifica é o amor que nos envia. A mesa não é destino, é ponto de partida.","a":["Ame alguém de forma visível esta semana.","Sirva alguém fora do círculo da igreja.","Ore por uma pessoa que ainda não conhece o amor de Cristo."]},
+{"s":38,"d":261,"m":"O Envio: Enviados da Mesa","p":"20 a 24","t":"Toda autoridade","r":["Daniel 4-6","Daniel 7-9","Daniel 10-12","Esdras 1; Salmos 85, 126, 137","Esdras 2; Salmos 1, 121","Salmo 119","Esdras 3:1-7; Salmos 107, 111"],"v":"Foi-me dada toda a autoridade no céu e na terra.","vr":"Mateus 28.18","f":"O envio não é baseado em nosso poder, mas na autoridade de Cristo. Não vamos sozinhos nem despreparados.","a":["Identifique um medo que te impede de testemunhar.","Ore pedindo coragem para falar de Jesus.","Fale de Cristo a alguém esta semana, mesmo que brevemente."]},
+{"s":39,"d":268,"m":"O Envio: Enviados da Mesa","p":"27 a 1","t":"Ide e fazei discípulos","r":["Salmos 112, 113, 114","Esdras 3:8-13; Salmos 66, 84, 116","Salmos 125, 129; Esdras 4; Ageu 1, 2","Zacarias 1-3","Zacarias 4-6","Zacarias 7-10","Zacarias 11-14"],"v":"Ide, portanto, fazei discípulos de todas as nações.","vr":"Mateus 28.19","f":"A missão não é evento, é rotina e disciplina. Discípulos não são feitos em campanhas, mas em convivência.","a":["Escolha uma pessoa para discipular informalmente.","Convide alguém para um estudo bíblico.","Ensine o que você sabe a quem sabe menos."]},
+{"s":40,"d":275,"m":"O Envio: Enviados da Mesa","p":"4 a 8","t":"Eu estou convosco","r":["Esdras 5, 6:1-15; Salmo 138","Esdras 6:16-22; Salmos 81, 134","Salmos 135, 136, 146","Salmo 87; Esdras 7-8","Esdras 9, 10; Ester 1, 2","Salmos 10, 45; Ester 3, 4:1-9","Ester 4:10-17; 5-7"],"v":"E eis que eu estou convosco todos os dias, até a consumação dos séculos.","vr":"Mateus 28.20","f":"A promessa sustenta o envio. Não somos enviados sozinhos, somos enviados acompanhados.","a":["Reconheça em oração a presença de Deus no seu dia.","Anote três momentos em que você sentiu Deus perto.","Encoraje alguém que está desanimado na missão."]},
+{"s":41,"d":282,"m":"O Envio: A Alegria de Servir","p":"11 a 15","t":"Consolo, amor, comunhão","r":["Ester 8-10; Salmo 124","Neemias 1-3","Salmos 147-149","Neemias 4-6","Salmos 150, 19; Neemias 7","Neemias 8-10","Neemias 11-13"],"v":"Se há, pois, algum consolo em Cristo, algum conforto de amor, alguma comunhão do Espírito...","vr":"Filipenses 2.1","f":"A alegria no serviço nasce de relações, não de resultados. Servimos porque fomos consolados.","a":["Lembre-se de um momento em que você foi consolado por Deus.","Console alguém esta semana.","Agradeça a alguém que o consolou no passado."]},
+{"s":42,"d":289,"m":"O Envio: A Alegria de Servir","p":"18 a 22","t":"O mesmo sentimento de Cristo","r":["Malaquias 1-4","Mateus 1-4","Mateus 5-7","Mateus 8-11","Mateus 12-15","Mateus 16-19","Mateus 20-22"],"v":"Haja em vós o mesmo sentimento que houve também em Cristo Jesus.","vr":"Filipenses 2.5","f":"O sentimento de Cristo é o esvaziamento voluntário. Servir é escolher descer.","a":["Abra mão de algo que você tem direito esta semana.","Ceda a vez a alguém.","Faça uma tarefa abaixo do seu ‘nível’ sem se sentir diminuído."]},
+{"s":43,"d":296,"m":"O Envio: A Alegria de Servir","p":"25 a 29","t":"O esvaziamento","r":["Mateus 23-25","Mateus 26-28","Marcos 1-3","Marcos 4-6","Marcos 7-10","Marcos 11-13","Marcos 14-16"],"v":"Antes, a si mesmo se esvaziou, assumindo a forma de servo.","vr":"Filipenses 2.7","f":"Serviço sem alegria vira peso; alegria sem serviço vira entretenimento. O esvaziamento é o caminho da alegria.","a":["Esvazie sua agenda de algo que só te serve.","Doe tempo a alguém que não pode retribuir.","Rejeite um privilégio em favor de outro."]},
+{"s":44,"d":303,"m":"O Envio: A Alegria de Servir","p":"1 a 5","t":"A exaltação que não buscamos","r":["Lucas 1-4","Lucas 5-8","Lucas 9-12","Lucas 13-16","Lucas 17-20","Lucas 21-24","João 1-4"],"v":"Por isso também Deus o exaltou soberanamente.","vr":"Filipenses 2.9","f":"A recompensa vem de Deus, não da plateia. Quem serve buscando reconhecimento já recebeu sua recompensa.","a":["Sirva sem contar a ninguém.","Recuse a tentação de mencionar o bem que fez.","Ore pedindo um coração que se contente com o olhar de Deus."]},
+{"s":45,"d":310,"m":"O Envio: À Mesa para Sempre","p":"8 a 12","t":"As bodas do Cordeiro","r":["João 5-8","João 9-12","João 13-16","João 17-21","Atos 1-3","Atos 4-6","Atos 7-9"],"v":"Regozijemo-nos, e alegremo-nos, e demos-lhe glória, porque vindas são as bodas do Cordeiro.","vr":"Apocalipse 19.7","f":"A história termina em banquete, não em fuga. Toda mesa da igreja é ensaio para a ceia final.","a":["Leia Apocalipse 19 e medite na esperança final.","Celebre com a comunidade como quem antecipa a festa eterna.","Encoraje alguém desanimado com a esperança da eternidade."]},
+{"s":46,"d":317,"m":"O Envio: À Mesa para Sempre","p":"15 a 19","t":"Convidados e bem-aventurados","r":["Atos 10-14","Tiago 1, 2","Tiago 3-5","Gálatas 1-3","Gálatas 4-6","Atos 15 a 18:11","1 Tessalonicenses 1-5"],"v":"Bem-aventurados aqueles que são chamados à ceia das bodas do Cordeiro.","vr":"Apocalipse 19.9","f":"A graça nos põe à mesa. Não fomos convidados por mérito, mas por amor.","a":["Agradeça por ter sido convidado.","Convide alguém que ainda não recebeu o convite.","Viva esta semana como quem já está à mesa."]},
+{"s":47,"d":324,"m":"O Envio: À Mesa para Sempre","p":"22 a 26","t":"Servir e reinar","r":["2 Tessalonicenses 1-3; Atos 18:12 - 19:10","1 Coríntios 1-4","1 Coríntios 5-8","1 Coríntios 9-12","1 Coríntios 13-16","Atos 19:11-20:1; 2 Coríntios 1-3","2 Coríntios 4-6"],"v":"Vós sois os que tendes permanecido comigo nas minhas tentações... para que comais e bebais à minha mesa no meu reino.","vr":"Lucas 22.28-30","f":"A fidelidade no pouco abre o muito. Todo serviço presente é preparação para o serviço eterno.","a":["Renove seu compromisso de servir por mais um ano.","Ensine alguém a servir com fidelidade.","Faça um balanço do ano: onde você cresceu no serviço?"]},
+{"s":48,"d":331,"m":"O Envio: À Mesa para Sempre","p":"29 a 3","t":"A mesa que não termina","r":["2 Coríntios 7-9","2 Coríntios 10-13; Atos 20:2","Romanos 1-4","Romanos 5-6","Romanos 7-9","Romanos 10-12","Romanos 13-16"],"v":"E Deus limpará de seus olhos toda lágrima.","vr":"Apocalipse 21.4","f":"O fim é mesa, não solidão. Se a história termina em comunhão, por que vivemos como se terminasse em isolamento?","a":["Reúna sua família e celebre a fidelidade de Deus no ano.","Participe da Ceia de encerramento com toda a igreja.","Escreva uma carta de gratidão a alguém que serviu você este ano."]},
+{"s":49,"d":338,"m":"Revisão e Envio para o Novo Ano","p":"6 a 10","t":"Relembrar","r":["Atos 20-22","Atos 23-25","Atos 26-28","Efésios 1-3","Efésios 4-6","Filipenses 1-4","Colossenses 1-4"],"v":"Lembra-te de todo o caminho pelo qual o Senhor teu Deus te fez andar.","vr":"Deuteronômio 8.2","f":"Revisar é um ato espiritual. Quem não lembra, repete os mesmos erros.","a":["Liste três coisas que Deus fez este ano.","Reconheça uma área em que você falhou.","Agradeça por uma dificuldade que o amadureceu."]},
+{"s":50,"d":345,"m":"Revisão e Envio para o Novo Ano","p":"13 a 17","t":"Celebrar","r":["Hebreus 1-4","Hebreus 5-7","Hebreus 8-10","Hebreus 11-13","Filemom; 1 Pedro 1, 2","1 Pedro 3-5","2 Pedro 1-3"],"v":"Grandes coisas fez o Senhor por nós, e por isso estamos alegres.","vr":"Salmo 126.3","f":"A celebração é memória em festa. Celebrar é reconhecer que não foi nossa força.","a":["Faça uma celebração com sua família ou grupo.","Testemunhe publicamente algo que Deus fez.","Reconheça publicamente alguém que serviu bem."]},
+{"s":51,"d":352,"m":"Revisão e Envio para o Novo Ano","p":"20 a 24","t":"Renovar","r":["1 Timóteo 1-3","1 Timóteo 4-6","Tito 1-3","2 Timóteo 1-4","1 João 1, 2","1 João 3-5","2 João; 3 João; Judas"],"v":"Renovai-vos no espírito do vosso entendimento.","vr":"Efésios 4.23","f":"Todo ano novo pede uma decisão nova. Servir não é hábito, é escolha renovada.","a":["Escreva uma decisão concreta para o próximo ano.","Comprometa-se com um ministério específico.","Ore pedindo um coração disposto."]},
+{"s":52,"d":359,"m":"Revisão e Envio para o Novo Ano","p":"27 a 31","t":"Enviar","r":["Apocalipse 1-3","Apocalipse 4-6","Apocalipse 7-9","Apocalipse 10-12","Apocalipse 13-15","Apocalipse 16-18","Apocalipse 19-22"],"v":"Como o Pai me enviou, também eu vos envio a vós.","vr":"João 20.21","f":"O ano termina como começou: com um envio. A mesa é o ponto de partida, não o destino.","a":["Identifique uma pessoa para discipular no próximo ano.","Comprometa-se com uma ação missionária concreta.","Abençoe alguém com uma palavra de envio."]}
 ];
 const hashOf=a=>{const s=JSON.stringify(a);let x=5381;for(let i=0;i<s.length;i++)x=((x<<5)+x+s.charCodeAt(i))|0;return String(x)};
 let BH=hashOf(WEEKS);
@@ -274,15 +358,77 @@ async function copyText(s){
 }
 const semTxt=w=>'Semana '+w.s+(w.p?' ('+w.p+')':'');
 
+// Zoom da letra (90% a 150%)
+let zoom=get('dev_zoom',100);if(![90,100,110,120,130,140,150].includes(zoom))zoom=100;
+function applyZoom(){document.documentElement.style.setProperty('--z',zoom/100);$('zr').textContent=zoom+'%';$('zm').disabled=zoom<=90;$('zp').disabled=zoom>=150;put('dev_zoom',zoom)}
+$('zm').onclick=()=>{zoom=Math.max(90,zoom-10);applyZoom()};
+$('zp').onclick=()=>{zoom=Math.min(150,zoom+10);applyZoom()};
+$('zr').onclick=()=>{zoom=100;applyZoom()};
+applyZoom();
+
+// Contatos com ícones
+const SV=p=>'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>';
+const IC={
+ tel:SV('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>'),
+ wa:SV('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>'),
+ ig:SV('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>'),
+ mail:SV('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>')
+};
+function contatos(){
+ const d=el('div','ct');
+ [['tel','IBM: 21 3975-1607'],['wa','WhatsApp: 21 98579-1147'],['ig','@ibmonero'],['mail','secretaria@ibmonero.com']].forEach(x=>{const s=el('span','ci');s.innerHTML=IC[x[0]];s.append(x[1]);d.append(s)});
+ return d;
+}
+
+// Progresso e dias concluídos
+const totalDias=()=>data.reduce((n,w)=>n+w.r.length,0);
+function doneSet(){return new Set(get('dev_done',[]))}
+function toggleDia(n,on){const s=doneSet();on?s.add(n):s.delete(n);put('dev_done',[...s].sort((a,b)=>a-b))}
+function progresso(){
+ const w=data[wi],s=doneSet();
+ const sw=w.r.filter((_,i)=>s.has(w.d+i)).length;
+ const tot=totalDias(),all=[...s].filter(n=>n>=1&&n<=tot).length;
+ $('prog').textContent='✅ '+sw+' de '+w.r.length+' dias desta semana · '+all+' de '+tot+' no ano';
+}
+function semanaDoDia(n){return data.findIndex(w=>n>=w.d&&n<w.d+w.r.length)}
+function irDia(n){
+ const i=semanaDoDia(n);
+ if(i<0){toast('Dia fora do plano (1 a '+totalDias()+')');return}
+ wi=i;show();
+ const r=$('dia-'+n);if(r){r.classList.add('hl');r.scrollIntoView({behavior:'smooth',block:'center'})}
+}
+$('dgo').onclick=()=>{const n=parseInt($('dj').value,10);if(!n){toast('Digite o número do dia');return}irDia(n)};
+$('dj').onkeydown=e=>{if(e.key==='Enter')$('dgo').onclick()};
+$('dcont').onclick=()=>{
+ const s=doneSet();
+ for(const w of data)for(let i=0;i<w.r.length;i++)if(!s.has(w.d+i)){irDia(w.d+i);return}
+ toast('Você concluiu todos os dias! 🙌');
+};
+
+function renderDias(w){
+ const box=$('c-plano');box.textContent='';const s=doneSet();
+ w.r.forEach((p,i)=>{
+  const n=w.d+i;
+  const row=el('div','dia'+(s.has(n)?' ok':''));row.id='dia-'+n;
+  const cb=document.createElement('input');cb.type='checkbox';cb.checked=s.has(n);cb.setAttribute('aria-label','Marcar o dia '+n+' como concluído');
+  cb.onchange=()=>{toggleDia(n,cb.checked);row.classList.toggle('ok',cb.checked);progresso()};
+  const links=el('span','dl');
+  bibPartes(p).forEach((x,k)=>{
+   if(k)links.append('; ');
+   if(x.u){const a=el('a','',x.t);a.href=x.u;a.target='_blank';a.rel='noopener';links.append(a)}else links.append(x.t);
+  });
+  row.append(cb,el('span','dn','Dia '+n),links);box.append(row);
+ });
+}
+
 function show(){
  const w=data[wi];
- $('wsel').value=wi;
+ $('ddt').textContent='Semana '+(wi+1)+' de 52';markDD();
  $('c-serie').textContent=SERIE;
- $('c-mes').textContent=w.m||'';
+ $('c-mes').textContent=w.m||'';$('c-mes').classList.toggle('hide',!w.m);
  $('c-sem').textContent=semTxt(w);
  $('c-tit').textContent=w.t||'Em preparação';
- const pl=$('c-plano');pl.textContent='';
- w.r.forEach((p,i)=>{const u=bibLink(p);const e=el(u?'a':'span','chip');if(u){e.href=u;e.target='_blank';e.rel='noopener'}e.append(el('b','','Dia '+(i+1)),p);pl.append(e)});
+ renderDias(w);progresso();
  $('s-plano').classList.toggle('hide',!w.r.length);
  $('c-vs').textContent=w.v?'“'+w.v+'”':'';
  $('c-vr').textContent=w.vr?'('+w.vr+')':'';
@@ -293,21 +439,32 @@ function show(){
  const as=w.a.filter(Boolean);as.forEach(x=>ap.append(el('li','',x)));
  $('s-ap').classList.toggle('hide',!as.length);
  $('s-vazio').classList.toggle('hide',!!(w.t||w.r.length||w.f));
- $('c-ft').textContent=CONTATOS;
+ const ft=$('c-ft');ft.textContent='';ft.append(contatos());
  $('prev').disabled=wi===0;$('next').disabled=wi===51;
  $('prev').style.opacity=wi===0?.4:1;$('next').style.opacity=wi===51?.4:1;
 }
-for(let i=0;i<52;i++){const o=el('option','','Semana '+(i+1)+' de 52');o.value=i;$('wsel').append(o)}
+// Menu suspenso compacto das semanas
+function fechaDD(){$('ddl').classList.add('hide');$('ddb').setAttribute('aria-expanded','false')}
+function markDD(){[...$('ddl').children].forEach((b,i)=>{b.classList.toggle('on',i===wi);b.setAttribute('aria-selected',i===wi?'true':'false')})}
+for(let i=0;i<52;i++){const b=el('button','ddi','Semana '+(i+1)+' de 52');b.type='button';b.setAttribute('role','option');b.onclick=()=>{wi=i;fechaDD();show()};$('ddl').append(b)}
+$('ddb').onclick=e=>{
+ e.stopPropagation();
+ const abre=$('ddl').classList.contains('hide');
+ if(!abre){fechaDD();return}
+ $('ddl').classList.remove('hide');$('ddb').setAttribute('aria-expanded','true');
+ const s=$('ddl').children[wi];if(s)$('ddl').scrollTop=Math.max(0,s.offsetTop-70);
+};
+document.addEventListener('click',e=>{if(!$('dd').contains(e.target))fechaDD()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')fechaDD()});
 $('prev').onclick=()=>{if(wi>0){wi--;show()}};
 $('next').onclick=()=>{if(wi<51){wi++;show()}};
-$('wsel').onchange=e=>{wi=+e.target.value;show()};
 
 function wpp(){
  const w=data[wi];
  let s='*📖 Devocional IBM — '+semTxt(w)+'*\n';
  if(w.t)s+='*'+w.t+'*\n';
  if(w.m)s+='_'+w.m+'_\n';
- if(w.r.length)s+='\n*Plano de leitura*\n'+w.r.map((p,i)=>'Dia '+(i+1)+': '+p).join('\n')+'\n';
+ if(w.r.length)s+='\n*Leituras da semana*\n'+w.r.map((p,i)=>'Dia '+(w.d+i)+': '+p).join('\n')+'\n';
  if(w.v)s+='\n_“'+w.v+'”_ ('+w.vr+')\n';
  if(w.f)s+='\n*Reflexão*\n'+w.f+'\n';
  const ap=w.a.filter(Boolean);
@@ -397,6 +554,7 @@ if('Notification' in window&&Notification.permission==='granted')sendTag();
 nstat();
 
 
+
 // Editor das 52 semanas
 let editing=-1;
 function renderList(){
@@ -408,14 +566,14 @@ function renderList(){
  });
 }
 function addRow(v){
- const r=el('div','rrow');const i=document.createElement('input');i.value=v||'';i.placeholder='Gênesis 1,2';
+ const r=el('div','rrow');const i=document.createElement('input');i.value=v||'';i.placeholder='Gênesis 1, 2';
  const x=el('button','','✕');x.type='button';x.onclick=()=>r.remove();
  r.append(i,x);$('e-r').append(r);
 }
 function openForm(i){
  editing=i;const w=data[i];$('form').classList.remove('hide');
  $('fh').textContent='Editando Semana '+w.s;
- $('e-m').value=w.m;$('e-p').value=w.p;$('e-t').value=w.t;
+ $('e-m').value=w.m;$('e-p').value=w.p;$('e-t').value=w.t;$('e-d').value=w.d;
  $('e-r').textContent='';w.r.forEach(addRow);
  $('e-v').value=w.v;$('e-vr').value=w.vr;$('e-f').value=w.f;
  for(let j=0;j<3;j++)$('e-a'+j).value=w.a[j]||'';
@@ -425,7 +583,7 @@ $('e-radd').onclick=()=>addRow('');
 $('cn').onclick=()=>{$('form').classList.add('hide');editing=-1};
 $('sv').onclick=()=>{
  if(editing<0)return;
- const w={s:editing+1,m:$('e-m').value.trim(),p:$('e-p').value.trim(),t:$('e-t').value.trim(),
+ const w={s:editing+1,d:parseInt($('e-d').value,10)||data[editing].d,m:$('e-m').value.trim(),p:$('e-p').value.trim(),t:$('e-t').value.trim(),
   r:[...$('e-r').querySelectorAll('input')].map(x=>x.value.trim()).filter(Boolean),
   v:$('e-v').value.trim(),vr:$('e-vr').value.trim(),f:$('e-f').value.trim(),
   a:[0,1,2].map(j=>$('e-a'+j).value.trim())};
@@ -439,20 +597,20 @@ $('rst').onclick=()=>{
  renderList();show();toast('Originais restaurados');
 };
 
-// Folha para imprimir (A4 horizontal: boletim + anotações)
+// Folha para imprimir (A4 horizontal: boletim + anotações) – não é afetada pelo zoom da tela
 for(let i=0;i<52;i++){const o=el('option','','Semana '+(i+1));o.value=i;$('wk').append(o)}
 function renderSheet(){
  const w=data[+$('wk').value||0],P=$('paper');P.textContent='';
  const a=el('div','pg');
  const lg=document.createElement('img');lg.src=LOGO;lg.alt='IBM';lg.style.cssText='display:block;margin:0 auto 6px;width:54px;height:54px';a.append(lg);
  a.append(el('h3','','Série: '+SERIE),el('div','c',semTxt(w).toUpperCase()),el('div','tt',w.t||''));
- if(w.r.length)a.append(el('div','rd',w.r.map((p,i)=>'Dia '+(i+1)+' '+p).join('  ·  ')));
+ if(w.r.length)a.append(el('div','rd',w.r.map((p,i)=>'Dia '+(w.d+i)+' '+p).join('  ·  ')));
  a.append(el('h4','','Versículo'));
  const v=el('p','',w.v?'“'+w.v+'” ('+w.vr+')':'');v.style.fontStyle='italic';a.append(v);
  a.append(el('h4','','Reflexão'),el('p','',w.f||''),el('h4','','Três aplicações para esta semana'));
  const ol=el('ol');w.a.filter(Boolean).forEach(t=>ol.append(el('li','',t)));a.append(ol);
  if(w.m)a.append(el('div','mes',w.m));
- a.append(el('div','ft',CONTATOS));
+ const ft=el('div','ft');ft.append(contatos());a.append(ft);
  const b=el('div','pg');b.append(el('h3','','Anotações'),el('div','lines'));
  P.append(a,b);
 }
