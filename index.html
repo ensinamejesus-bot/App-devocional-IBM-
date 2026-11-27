@@ -646,7 +646,20 @@ function renderSheet(){
  P.append(a,b);
 }
 $('wk').onchange=()=>{wi=+$('wk').value;show();renderSheet()};
-$('pbtn').onclick=()=>{try{window.print()}catch(e){toast('Use o menu do navegador: Imprimir')}};
+const TITULO_ORIGINAL=document.title;
+let tituloTimer=null;
+function restauraTitulo(){clearTimeout(tituloTimer);document.title=TITULO_ORIGINAL}
+window.addEventListener('afterprint',restauraTitulo);
+function nomeArquivoSemana(){
+ const i=+$('wk').value||0,w=data[i];
+ const t=String(w.t||'').replace(/[\\\/:*?"<>|\u0000-\u001f]/g,'').replace(/\s+/g,' ').trim();
+ return 'Devocional IBM - Semana '+String(i+1).padStart(2,'0')+(t?' - '+t:'');
+}
+$('pbtn').onclick=()=>{
+ document.title=nomeArquivoSemana();
+ clearTimeout(tituloTimer);tituloTimer=setTimeout(restauraTitulo,120000);
+ try{window.print()}catch(e){restauraTitulo();toast('Use o menu do navegador: Imprimir')}
+};
 
 let cur='view';
 function setView(v){
