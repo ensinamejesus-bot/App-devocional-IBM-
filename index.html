@@ -140,6 +140,14 @@ header>div{text-align:center}
 .dia .dl{flex:1;min-width:0}
 .dia .dl a{color:var(--ac2);font-weight:600;text-decoration:underline}
 #s-vs .hh,#s-rf .hh,#s-ap .hh{display:table;margin:18px auto 8px;border-bottom:2px solid #eab308;padding-bottom:2px}
+.vm{position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(10,20,40,.55);display:flex;align-items:center;justify-content:center;z-index:100;padding:16px}
+.vm.hide{display:none}
+.vmc{background:var(--card);color:var(--tx);border-radius:16px;padding:18px 16px;width:100%;max-width:420px;max-height:90vh;overflow-y:auto;box-shadow:0 12px 40px rgba(0,0,0,.35);text-align:center}
+.vmc h3{margin:0 0 14px;font-size:1.05rem;line-height:1.35;color:var(--ac2)}
+.vb{display:block;box-sizing:border-box;width:100%;padding:14px 12px;margin-bottom:10px;border:1px solid var(--ac);border-radius:12px;color:var(--ac2);text-decoration:none;font-weight:600;font-size:.95rem;line-height:1.3;background:transparent}
+.vb small{display:block;font-weight:500;font-size:.75rem;opacity:.9;margin-top:2px}
+.vb.pri{background:var(--btn);color:#fff;border-color:var(--btn)}
+.vmcancel{width:100%;padding:12px;border:none;background:transparent;color:var(--mut);font-size:.9rem;cursor:pointer;text-decoration:underline}
 .dia.ok{opacity:.65}.dia.ok .dl{text-decoration:line-through}
 .dia.hl{outline:2px solid var(--y)}
 .verse,#c-rf,.apps{text-align:left}
@@ -257,6 +265,7 @@ header>div{text-align:center}
 </section>
 </div>
 <div id="toast" role="status"></div>
+<div id="vm" class="vm hide noprint" role="dialog" aria-modal="true" aria-labelledby="vmt"><div class="vmc"><h3 id="vmt"></h3><div id="vmb"></div><button type="button" id="vmx" class="vmcancel">Cancelar / Fechar</button></div></div>
 
 <script>
 const $=id=>document.getElementById(id);
@@ -267,18 +276,19 @@ const SERIE='Chamados para servir em uma só família e uma só mesa';
 const CONTATOS='IBM: 21 3975-1607 / WhatsApp: 21 98579-1147 | Instagram: @ibmonero | e-mail: secretaria@ibmonero.com';
 const INICIO=new Date(2027,0,4); // início da Semana 1 (segunda, 04/01/2027)
 // [sigla no bibliaonline, nome, apelidos...]
-const LIVROS=[['gn','Gênesis','gen'],['ex','Êxodo','exo'],['lv','Levítico','lev'],['nm','Números','num'],['dt','Deuteronômio','deut'],['js','Josué','jos'],['jz','Juízes'],['rt','Rute'],['1sm','1 Samuel','1sam'],['2sm','2 Samuel','2sam'],['1rs','1 Reis','1re'],['2rs','2 Reis','2re'],['1cr','1 Crônicas','1cron'],['2cr','2 Crônicas','2cron'],['ed','Esdras','esd'],['ne','Neemias','nee'],['et','Ester','est'],['job','Jó'],['sl','Salmos','salmo','sal'],['pv','Provérbios','prov'],['ec','Eclesiastes','ecl'],['ct','Cantares de Salomão','cantares','canticos','cantico dos canticos'],['is','Isaías','isa'],['jr','Jeremias','jer'],['lm','Lamentações','lam'],['ez','Ezequiel','eze'],['dn','Daniel','dan'],['os','Oséias'],['jl','Joel'],['am','Amós'],['ob','Obadias','abdias'],['jn','Jonas'],['mq','Miquéias','miq'],['na','Naum'],['hc','Habacuque','hab'],['sf','Sofonias','sof'],['ag','Ageu'],['zc','Zacarias','zac'],['ml','Malaquias','mal'],['mt','Mateus','mat'],['mc','Marcos','mar'],['lc','Lucas','luc'],['jo','João'],['at','Atos','atos dos apostolos'],['rm','Romanos','rom'],['1co','1 Coríntios','1cor'],['2co','2 Coríntios','2cor'],['gl','Gálatas','gal'],['ef','Efésios','efe'],['fp','Filipenses','fil'],['cl','Colossenses','col'],['1ts','1 Tessalonicenses','1tes'],['2ts','2 Tessalonicenses','2tes'],['1tm','1 Timóteo','1tim'],['2tm','2 Timóteo','2tim'],['tt','Tito'],['fm','Filemom','filemon'],['hb','Hebreus','heb'],['tg','Tiago','tia'],['1pe','1 Pedro','1ped'],['2pe','2 Pedro','2ped'],['1jo','1 João','1joao'],['2jo','2 João','2joao'],['3jo','3 João','3joao'],['jd','Judas'],['ap','Apocalipse','apo']];
+const LIVROS=[['GEN','Gênesis','gen'],['EXO','Êxodo','exo'],['LEV','Levítico','lev'],['NUM','Números','num'],['DEU','Deuteronômio','deut'],['JOS','Josué','jos'],['JDG','Juízes'],['RUT','Rute'],['1SA','1 Samuel','1sam'],['2SA','2 Samuel','2sam'],['1KI','1 Reis','1re'],['2KI','2 Reis','2re'],['1CH','1 Crônicas','1cron'],['2CH','2 Crônicas','2cron'],['EZR','Esdras','esd'],['NEH','Neemias','nee'],['EST','Ester','est'],['JOB','Jó'],['PSA','Salmos','salmo','sal'],['PRO','Provérbios','prov'],['ECC','Eclesiastes','ecl'],['SNG','Cantares de Salomão','cantares','canticos','cantico dos canticos'],['ISA','Isaías','isa'],['JER','Jeremias','jer'],['LAM','Lamentações','lam'],['EZK','Ezequiel','eze'],['DAN','Daniel','dan'],['HOS','Oséias'],['JOL','Joel'],['AMO','Amós'],['OBA','Obadias','abdias'],['JON','Jonas'],['MIC','Miquéias','miq'],['NAM','Naum'],['HAB','Habacuque','hab'],['ZEP','Sofonias','sof'],['HAG','Ageu'],['ZEC','Zacarias','zac'],['MAL','Malaquias','mal'],['MAT','Mateus','mat'],['MRK','Marcos','mar'],['LUK','Lucas','luc'],['JHN','João','jo'],['ACT','Atos','atos dos apostolos'],['ROM','Romanos','rom'],['1CO','1 Coríntios','1cor'],['2CO','2 Coríntios','2cor'],['GAL','Gálatas','gal'],['EPH','Efésios','efe'],['PHP','Filipenses','fil'],['COL','Colossenses','col'],['1TH','1 Tessalonicenses','1tes'],['2TH','2 Tessalonicenses','2tes'],['1TI','1 Timóteo','1tim'],['2TI','2 Timóteo','2tim'],['TIT','Tito'],['PHM','Filemom','filemon'],['HEB','Hebreus','heb'],['JAS','Tiago','tia'],['1PE','1 Pedro','1ped'],['2PE','2 Pedro','2ped'],['1JN','1 João','1joao'],['2JN','2 João','2joao'],['3JN','3 João','3joao'],['JUD','Judas'],['REV','Apocalipse','apo']];
 const norm=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
 const LV={};LIVROS.forEach(l=>{LV[norm(l[0])]=l[0];l.slice(1).forEach(n=>{LV[norm(n)]=l[0]})});
 function bibRef(p){
  const m=String(p||'').trim().match(/^((?:[1-3]\s*)?[A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)*)(?:\s+(\d+))?/);
  if(!m)return null;
  const nome=m[1].trim();
- const sig=/^jó$/i.test(nome)?'job':LV[norm(nome)];
+ const sig=/^jó$/i.test(nome)?'JOB':LV[norm(nome)];
  return sig?{sig:sig,cap:m[2]||'1'}:null;
 }
-const bibUrl=r=>r?'https://www.bibliaonline.com.br/ara/'+r.sig+'/'+r.cap:null;
-function bibLink(p){return bibUrl(bibRef(p))}
+// Bible.com / YouVersion: {sig}=livro em USFM, {cap}=primeiro capítulo
+const VERSOES=[['ARA',1608,'ARA — Almeida Revista e Atualizada'],['NAA',1840,'NAA — Nova Almeida Atualizada'],['NVI',129,'NVI — Nova Versão Internacional'],['ARC',212,'ARC — Almeida Revista e Corrigida']];
+const bibleUrl=(r,v)=>'https://www.bible.com/pt/bible/'+v[1]+'/'+r.sig+'.'+r.cap+'.'+v[0];
 // separa "Livro 1, 2; 5-7; Outro 3" em partes; partes só com números herdam o livro anterior
 function bibPartes(texto){
  let ult=null;
@@ -286,7 +296,7 @@ function bibPartes(texto){
   let r=bibRef(x);
   if(!r){const n=x.match(/^(\d+)/);if(n&&ult)r={sig:ult,cap:n[1]}}
   if(r)ult=r.sig;
-  return {t:x,u:bibUrl(r)};
+  return {t:x,r:r};
  });
 }
 const WEEKS=[
@@ -415,11 +425,28 @@ function renderDias(w){
   const links=el('span','dl');
   bibPartes(p).forEach((x,k)=>{
    if(k)links.append('; ');
-   if(x.u){const a=el('a','',x.t);a.href=x.u;a.target='_blank';a.rel='noopener';links.append(a)}else links.append(x.t);
+   if(x.r){const a=el('a','',x.t);a.href='#';a.setAttribute('role','button');a.onclick=ev=>{ev.preventDefault();abrirVersoes(x.t,x.r)};links.append(a)}else links.append(x.t);
   });
   row.append(cb,el('span','dn','Dia '+n),links);box.append(row);
  });
 }
+
+// Janela de escolha da versão da Bíblia
+function fechaVM(){$('vm').classList.add('hide')}
+function abrirVersoes(txt,r){
+ $('vmt').textContent='Ler '+txt+' em qual versão?';
+ const b=$('vmb');b.textContent='';
+ VERSOES.forEach((v,i)=>{
+  const a=el('a','vb'+(i===0?' pri':''));a.append(v[2]);
+  if(i===0)a.append(el('small','','Padrão do devocional'));
+  a.href=bibleUrl(r,v);a.target='_blank';a.rel='noopener';a.onclick=()=>setTimeout(fechaVM,0);b.append(a);
+ });
+ $('vm').classList.remove('hide');
+ if(b.firstChild)b.firstChild.focus();
+}
+$('vmx').onclick=fechaVM;
+$('vm').onclick=e=>{if(e.target===$('vm'))fechaVM()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')fechaVM()});
 
 function show(){
  const w=data[wi];
